@@ -13,11 +13,11 @@ const images = {
 };
 
 // Replace this with the venue's WhatsApp number in international format, without + or spaces.
-const WHATSAPP_NUMBER = 'YOUR_WHATSAPP_NUMBER';
+const WHATSAPP_NUMBER = '9844107862';
 const address = 'Old Jewargi Road, Opposite Sparkles School, near Ring Road, Kalaburagi, Karnataka';
 
 function waLink(message='Hi, I\'m interested in booking Vatavaran Banquets & Lawns.') {
-  if (WHATSAPP_NUMBER === 'YOUR_WHATSAPP_NUMBER') return '#enquire';
+  if (WHATSAPP_NUMBER === '9844107862') return '#enquire';
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
