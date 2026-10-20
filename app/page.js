@@ -10,7 +10,13 @@ const images = {
   ceremony: '/images/lawn-ceremony.webp',
   weddingStage: '/images/wedding-stage-concept.jpg',
   weddingLawn: '/images/lawn-wedding-concept.jpg',
-  dining: '/images/celebration-dining-concept.jpg'
+  dining: '/images/celebration-dining-concept.jpg',
+  haldi: '/images/haldi-marigold.jpg',
+  redReception: '/images/red-gold-reception.jpg',
+  engagement: '/images/pastel-engagement.jpg',
+  sangeet: '/images/sangeet-evening.jpg',
+  gardenDinner: '/images/garden-dinner.jpg',
+  corporate: '/images/corporate-gathering.jpg'
 };
 
 // Replace this with the venue's WhatsApp number in international format, without + or spaces.
@@ -33,9 +39,15 @@ const gallery = [
   ['The Lawns', images.lawn],
   ['The Banquet Hall', images.stage],
   ['Outdoor Ceremony Setup', images.ceremony],
-  ['Wedding Reception Concept · AI', images.weddingStage],
-  ['Lawn Wedding Concept · AI', images.weddingLawn],
-  ['Celebration Dining Concept · AI', images.dining]
+  ['Floral Wedding Reception', images.weddingStage],
+  ['Lawn Wedding Ceremony', images.weddingLawn],
+  ['Celebration Dining', images.dining],
+  ['Marigold Haldi Celebration', images.haldi],
+  ['Classic Red & Gold Reception', images.redReception],
+  ['Pastel Engagement', images.engagement],
+  ['Sangeet Evening', images.sangeet],
+  ['Garden Dinner', images.gardenDinner],
+  ['Corporate Gathering', images.corporate]
 ];
 
 const faqs = [
@@ -89,7 +101,7 @@ export default function Home() {
 
     <section className="statement"><img src={images.stage} alt="Vatavaran celebration space"/><div className="statement-overlay"/><div className="statement-content"><div className="eyebrow light">THE VATAVARAN PROMISE</div><h2>Come for the space.<br/><em>Stay for the moment.</em></h2><p>A venue should do more than hold your guests. It should become part of the memory.</p></div></section>
 
-    <section className="gallery section" id="gallery"><div className="section-head"><div><div className="eyebrow">A GLIMPSE OF VATAVARAN</div><h2>See the space.<br/><em>Imagine the moment.</em></h2></div><p>Explore venue photos alongside AI-generated decoration concepts for inspiration.</p></div><div className="gallery-grid">{gallery.map(([title,src],i)=><button className={`gallery-card g${i+1}`} key={title} onClick={()=>setActiveGallery([title,src])}><img src={src} alt={title}/><span>{String(i+1).padStart(2,'0')} · {title}</span></button>)}</div></section>
+    <section className="gallery section" id="gallery"><div className="section-head"><div><div className="eyebrow">A GLIMPSE OF VATAVARAN</div><h2>See the space.<br/><em>Imagine the moment.</em></h2></div><p>Explore the venue and a range of celebration styles.</p></div><div className="gallery-grid">{gallery.map(([title,src],i)=><button className="gallery-card" key={title} onClick={()=>setActiveGallery([title,src])}><img src={src} alt={title}/><span>{String(i+1).padStart(2,'0')} · {title}</span></button>)}</div></section>
 
     <section className="enquire section" id="enquire"><div className="enquire-grid"><div><div className="eyebrow">YOUR DATE. YOUR CELEBRATION.</div><h2>Let's make it<br/><em>unforgettable.</em></h2><p>Share a few details and we’ll help you find the right setup for your celebration.</p><div className="contact-mini"><a href={waLink()}><MessageCircle size={19}/> WhatsApp the venue</a><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} target="_blank"><MapPin size={19}/> Get directions</a></div></div><form onSubmit={submit} className="form"><label>Name<input name="name" placeholder="Your name" required/></label><label>Phone number<input name="phone" placeholder="+91" required/></label><div className="form-row"><label>Event type<select name="event" defaultValue=""><option value="" disabled>Select</option><option>Wedding</option><option>Reception</option><option>Engagement</option><option>Birthday / Milestone</option><option>Corporate / Other</option></select></label><label>Guest count<input name="guests" type="number" placeholder="Approx. guests"/></label></div><label>Preferred date<input name="date" type="date" required/></label><label>Tell us more<textarea name="message" rows="4" placeholder="Anything you'd like us to know?"/></label><button className="button dark-button full" type="submit">Send Enquiry <ArrowUpRight size={17}/></button><small className="form-note"><Check size={13}/> No obligation. We’ll get back to you with availability and details.</small></form></div></section>
 
