@@ -3,33 +3,39 @@
 import { useState } from 'react';
 import { ArrowUpRight, ChevronDown, Check, MapPin, MessageCircle, Phone, Sparkles, X } from 'lucide-react';
 
-const BASE = 'https://functionhall.vercel.app/halls/vatavaran/';
 const images = {
-  exterior: BASE + 'vexterior.png',
-  lawn: BASE + 'vlawn.png',
-  stage: BASE + 'vstage.png',
-  dining: BASE + 'vdining.png',
-  parking: BASE + 'vparking.png'
+  exterior: '/images/venue-exterior.webp',
+  lawn: '/images/lawn-layout.webp',
+  stage: '/images/banquet-hall.webp',
+  ceremony: '/images/lawn-ceremony.webp',
+  weddingStage: '/images/wedding-stage-concept.jpg',
+  weddingLawn: '/images/lawn-wedding-concept.jpg',
+  dining: '/images/celebration-dining-concept.jpg'
 };
 
 // Replace this with the venue's WhatsApp number in international format, without + or spaces.
-const WHATSAPP_NUMBER = '919844107862';
+const WHATSAPP_NUMBER = '918296678282';
 const address = 'Old Jewargi Road, Opposite Sparkles School, near Ring Road, Kalaburagi, Karnataka';
 
 function waLink(message='Hi, I\'m interested in booking Vatavaran Banquets & Lawns.') {
-  if (WHATSAPP_NUMBER === '919844107862') return '#enquire';
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 const occasions = [
-  { title: 'Weddings', text: 'A grand setting for ceremonies, receptions and unforgettable beginnings.', image: images.lawn },
-  { title: 'Engagements', text: 'An elegant backdrop for intimate celebrations and beautiful first chapters.', image: images.stage },
+  { title: 'Weddings', text: 'A grand setting for ceremonies, receptions and unforgettable beginnings.', image: images.weddingLawn },
+  { title: 'Engagements', text: 'An elegant backdrop for intimate celebrations and beautiful first chapters.', image: images.weddingStage },
   { title: 'Receptions', text: 'Indoor and outdoor spaces designed for a celebration your guests remember.', image: images.exterior },
   { title: 'Milestones', text: 'Birthdays, anniversaries, family gatherings and every moment worth celebrating.', image: images.dining }
 ];
 
 const gallery = [
-  ['The Entrance', images.exterior], ['The Lawns', images.lawn], ['The Celebration', images.stage], ['Dining', images.dining], ['Arrival & Parking', images.parking]
+  ['The Entrance', images.exterior],
+  ['The Lawns', images.lawn],
+  ['The Banquet Hall', images.stage],
+  ['Outdoor Ceremony Setup', images.ceremony],
+  ['Wedding Reception Concept · AI', images.weddingStage],
+  ['Lawn Wedding Concept · AI', images.weddingLawn],
+  ['Celebration Dining Concept · AI', images.dining]
 ];
 
 const faqs = [
@@ -83,7 +89,7 @@ export default function Home() {
 
     <section className="statement"><img src={images.stage} alt="Vatavaran celebration space"/><div className="statement-overlay"/><div className="statement-content"><div className="eyebrow light">THE VATAVARAN PROMISE</div><h2>Come for the space.<br/><em>Stay for the moment.</em></h2><p>A venue should do more than hold your guests. It should become part of the memory.</p></div></section>
 
-    <section className="gallery section" id="gallery"><div className="section-head"><div><div className="eyebrow">A GLIMPSE OF VATAVARAN</div><h2>See the space.<br/><em>Imagine the moment.</em></h2></div><p>Explore the venue from arrival to celebration.</p></div><div className="gallery-grid">{gallery.map(([title,src],i)=><button className={`gallery-card g${i+1}`} key={title} onClick={()=>setActiveGallery([title,src])}><img src={src} alt={title}/><span>{String(i+1).padStart(2,'0')} · {title}</span></button>)}</div></section>
+    <section className="gallery section" id="gallery"><div className="section-head"><div><div className="eyebrow">A GLIMPSE OF VATAVARAN</div><h2>See the space.<br/><em>Imagine the moment.</em></h2></div><p>Explore venue photos alongside AI-generated decoration concepts for inspiration.</p></div><div className="gallery-grid">{gallery.map(([title,src],i)=><button className={`gallery-card g${i+1}`} key={title} onClick={()=>setActiveGallery([title,src])}><img src={src} alt={title}/><span>{String(i+1).padStart(2,'0')} · {title}</span></button>)}</div></section>
 
     <section className="enquire section" id="enquire"><div className="enquire-grid"><div><div className="eyebrow">YOUR DATE. YOUR CELEBRATION.</div><h2>Let's make it<br/><em>unforgettable.</em></h2><p>Share a few details and we’ll help you find the right setup for your celebration.</p><div className="contact-mini"><a href={waLink()}><MessageCircle size={19}/> WhatsApp the venue</a><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} target="_blank"><MapPin size={19}/> Get directions</a></div></div><form onSubmit={submit} className="form"><label>Name<input name="name" placeholder="Your name" required/></label><label>Phone number<input name="phone" placeholder="+91" required/></label><div className="form-row"><label>Event type<select name="event" defaultValue=""><option value="" disabled>Select</option><option>Wedding</option><option>Reception</option><option>Engagement</option><option>Birthday / Milestone</option><option>Corporate / Other</option></select></label><label>Guest count<input name="guests" type="number" placeholder="Approx. guests"/></label></div><label>Preferred date<input name="date" type="date" required/></label><label>Tell us more<textarea name="message" rows="4" placeholder="Anything you'd like us to know?"/></label><button className="button dark-button full" type="submit">Send Enquiry <ArrowUpRight size={17}/></button><small className="form-note"><Check size={13}/> No obligation. We’ll get back to you with availability and details.</small></form></div></section>
 
